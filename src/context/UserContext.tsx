@@ -3,6 +3,9 @@ import { createContext } from "react";
 export interface ListadoPuntaje {
   nombre: string;
   puntaje: number;
+  nivel:string;
+  errores: number;
+  porcentaje: number;
 }
 
 interface Contexto {

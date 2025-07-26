@@ -1,4 +1,10 @@
-export const palabras = [
+export interface Palabras {
+  id: number;
+  palabra: string;
+}
+
+
+export const palabras:Palabras[] = [
   {
     id: 1,
     palabra: "Amarillo",
@@ -33,7 +39,12 @@ export const palabras = [
   },
 ];
 
-export const colores = [
+export interface Colores {
+  id: number;
+  color: string;
+}
+
+export const colores:Colores[] = [
   {
     id: 1,
     color: "text-yellow-500",

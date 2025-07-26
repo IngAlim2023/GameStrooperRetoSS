@@ -1,48 +1,23 @@
 import React from "react";
-import useUserContext from "../context/HookUserContext";
-import { useNavigate } from "react-router-dom";
-import { FaBackspace } from "react-icons/fa";
+import BtnRegresar from "../components/botones/BtnRegresar";
+import NivelesScore from "../components/score/NivelesScore";
 
 const Score: React.FC = () => {
-  const { ranking } = useUserContext();
-  const navigate = useNavigate();
-
+  const niveles = ["Normal", "Veterano", "Dios"];
   return (
     <div className="flex flex-col justify-center items-center p-5 bg-sky-600 min-h-screen w-full text-white">
-      <div className="inline-block mt-8 px-4 py-2 bg-red-700 text-gray-700 rounded-md hover:bg-gray-300 cursor-pointer transition m-1">
-        <div
-          className="flex gap-1 justify-center items-center"
-          onClick={() => navigate("/")}
-        >
-          <FaBackspace />
-          <p>Regresar</p>
-        </div>
-      </div>
-      <h2 className="text-3xl font-bold mb-6">🏆 Puntajes</h2>
-      <div className="w-full max-w-md space-y-4">
-        {ranking.length === 0 ? (
-          <p className="text-center text-lg">
-            No hay puntajes registrados aún.
-          </p>
-        ) : (
-          ranking.map((value, index) => (
-            <div
-              key={index}
-              className="bg-white text-gray-800 px-4 py-3 rounded-lg shadow flex justify-between items-center"
-            >
-              <div>
-                <p className="font-semibold">Jugador:</p>
-                <p>{value.nombre}</p>
-              </div>
-              <div className="text-right">
-                <p className="font-semibold">Puntaje:</p>
-                <p className="text-xl font-bold text-blue-600">
-                  {value.puntaje}
-                </p>
-              </div>
-            </div>
-          ))
-        )}
+      {/* Botón regresar */}
+      <BtnRegresar />
+
+      {/* Título */}
+      <h2 className="text-3xl font-bold mb-6 text-center">🏆 Puntajes</h2>
+
+      {/* Contenedor general */}
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
+        {/* Nivel: Normal */}
+        {niveles.map((value, index) => (
+          <NivelesScore value={value} index={index} />
+        ))}
       </div>
     </div>
   );
